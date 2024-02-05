@@ -13,8 +13,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({storage:storage}).single('myFile')
 
-http
-  .createServer(function (req, res) {
+http.createServer(function (req, res) {
     res.writeHead(200, { "Content-Type": "text/html" });
     if (req.url === "/") {
       res.write("This is Home Page");
@@ -25,7 +24,7 @@ http
     } else if (req.url === "/contact") {
       res.write("This is Contact Page");
       res.end();
-    } else if (req.url === "/read-file") {
+    } else if (req.url === "/file-write") {
       fs.writeFile("demo.txt", "hello world", function (err) {
         if (err) {
           res.write("create faild");
